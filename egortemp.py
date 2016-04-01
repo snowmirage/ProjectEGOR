@@ -3,7 +3,7 @@
 import os
 import re
 
-output = os.popen("sudo /home/dev@egor.betoria.dyndns.org/temphumid/TEMPered/build/utils/tempered -s Fahrenheit").read()
+output = os.popen("/home/dev@egor.betoria.dyndns.org/temphumid/TEMPered/build/utils/tempered -s Fahrenheit").read()
 output2 = re.compile('\S+').findall(output)
 
 #print output
