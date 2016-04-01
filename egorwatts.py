@@ -1,6 +1,4 @@
 #!/usr/bin/python
-# This will live in the local checks folder for check_mk and should out put check_mk formated info on the power draw of the UPS
-
 import time
 import sys
 import os
@@ -18,10 +16,10 @@ import os
 
 
 
-now=time.strftime("%Y/%m/%d/%I/%M/%S")          #get the current date + time when this script started, need to adjust this to match format of log file
-status=3                #set status to 3 "unknown" to start
-perfdata=""             #set perfdata to null to start
-output="NOTSET" #set output string to "NOTSET" to start
+now=time.strftime("%Y/%m/%d/%I/%M/%S")		#get the current date + time when this script started, need to adjust this to match format of log file
+status=3		#set status to 3 "unknown" to start
+perfdata=""		#set perfdata to null to start
+output="NOTSET"	#set output string to "NOTSET" to start
 
 
 # Determine the status
@@ -31,14 +29,14 @@ output="NOTSET" #set output string to "NOTSET" to start
 
 # Open the file stream
 #with open(filename, 'r') as fh
-#       all_lines = fh.readlines()
+#	all_lines = fh.readlines()
 
 # Test stuff
-#print "now is set to"
+#print "now is set to" 
 #print now
 #print "all_lines"
 #print all_lines
 watts = os.popen("pwrstat -status | sed '17q;d' | awk -F' ' '{print $2}'").read()
 watts2 = watts.replace('\n', '')
 #print "watts is set to", watts, "\n"
-print "0 EgorWattsUsed watts=%s;900;1000;0;1200 OK - actuall wall watts is about 25 more" % watts2#egorpower.py
+print "0 EgorWattsUsed watts=%s;900;1000;0;1200 OK - actuall wall watts is about 25 more" % watts2
