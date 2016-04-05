@@ -12,5 +12,5 @@ output2 = re.compile('\S+').findall(output)
 
 output3 = re.sub('[%,]', '', output2[7])
 #print output3
-print "0 EgorHum relhumid=%s;90;95;0;100 OK - Relative Humidity in Garage" % output3
+print "0 EgorHum relhumid=%s;60;70;0;100 OK - Relative Humidity in Garage" % output3
 

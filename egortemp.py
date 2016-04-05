@@ -9,4 +9,4 @@ output2 = re.compile('\S+').findall(output)
 #print output
 #print output2
 #print output2[3]
-print "0 EgorTemp tempf=%s;90;100;0;125 OK - Temp of Garage in F" % output2[3]
+print "0 EgorTemp tempf=%s;85;95;0;115 OK - Temp of Garage in F" % output2[3]
