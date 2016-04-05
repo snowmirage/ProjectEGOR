@@ -1,0 +1,12 @@
+pass .1.3.6.1.2.6453.25.1.0 /bin/sh /snmpscripts/snmp-cpu-0-temp.sh
+pass .1.3.6.1.2.6453.25.1.1 /bin/sh /snmpscripts/snmp-cpu-1-temp.sh
+pass .1.3.6.1.2.6453.25.1.2 /bin/sh /snmpscripts/snmp-cpu-2-temp.sh
+pass .1.3.6.1.2.6453.25.1.3 /bin/sh /snmpscripts/snmp-cpu-3-temp.sh
+pass .1.3.6.1.2.6453.25.1.4 /bin/sh /snmpscripts/snmp-cpu-4-temp.sh
+pass .1.3.6.1.2.6453.25.1.5 /bin/sh /snmpscripts/snmp-cpu-5-temp.sh
+pass .1.3.6.1.2.6453.25.1.6 /bin/sh /snmpscripts/snmp-cpu-6-temp.sh
+pass .1.3.6.1.2.6453.25.1.7 /bin/sh /snmpscripts/snmp-cpu-7-temp.sh
+
+snmpget -v2c -c betoria localhost <OID>
+
+https://forums.freenas.org/index.php?threads/howto-monitoring-freenas-cpu-and-disk-temperature-by-snmp.26749/#post-170313
