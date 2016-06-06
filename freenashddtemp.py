@@ -8,8 +8,8 @@ host = "192.168.0.40"
 keyfile = "/home/powerpc/.ssh/id_rsa"
 command1 = "sysctl -n kern.disks"
 command3 = "smartctl -a /dev/da16 | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
-
-
+#### this command works on the freenas box but when we run via the stuff below it returns and empty []... not sure why will have to figure that out later.
+print "command3 is --- " + command3
 ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command3],
     shell=False,
     stdout=subprocess.PIPE,
