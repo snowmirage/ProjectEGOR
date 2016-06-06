@@ -12,13 +12,16 @@ ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command1],
     shell=False,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE)
-hddlist = ssh.stdout.readlines()
-if hddlist == []:
+hdd = ssh.stdout.readlines()
+if hdd == []:
     error = ssh.stderr.readlines()
     print >>sys.stderr, "ERROR: %s" % error
 else:
-    print hddlist
+    print hdd
     something = 1
+
+hddlist = hdd.split()
+
 
 for i in hddlist:
     print "In for loop"
