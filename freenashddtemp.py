@@ -7,7 +7,7 @@ import pprint
 host = "192.168.0.40"
 keyfile = "/home/powerpc/.ssh/id_rsa"
 command1 = "sysctl -n kern.disks"
-command3 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
+command3 = "smartctl -a /dev/da16 | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
 
 
 ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command3],
