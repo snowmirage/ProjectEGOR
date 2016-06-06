@@ -2,6 +2,7 @@
 
 import subprocess
 import sys
+import pprint
 
 host = "192.168.0.40"
 keyfile = "/home/powerpc/.ssh/id_rsa"
@@ -17,10 +18,10 @@ if hdd == []:
     error = ssh.stderr.readlines()
     print >>sys.stderr, "ERROR: %s" % error
 else:
-    print hdd
+    pprint.pprint(hdd)
     something = 1
 
-hddlist = hdd.split()
+hddlist = hdd[0].split()
 
 
 for i in hddlist:
@@ -39,7 +40,7 @@ for i in hddlist:
             error = ssh.stderr.readlines()
             print >> sys.stderr, "ERROR: %s" % error
         else:
-            print hddtemp
+            pprint.pprint(hddtemp)
 
 
 
