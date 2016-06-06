@@ -8,7 +8,7 @@ keyfile = "/home/powerpc/.ssh/id_rsa"
 command1 = "sysctl -n kern.disks"
 
 
-ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command],
+ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command1],
 	shell=False,
 	stdout=subprocess.PIPE,
 	stderr=subprocess.PIPE)
