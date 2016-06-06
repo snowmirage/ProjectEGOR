@@ -7,9 +7,10 @@ import pprint
 host = "192.168.0.40"
 keyfile = "/home/powerpc/.ssh/id_rsa"
 command1 = "sysctl -n kern.disks"
+command3 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
 
 
-ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command1],
+ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command3],
     shell=False,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE)
@@ -24,25 +25,25 @@ else:
 hddlist = hdd[0].split()
 
 
-for i in hddlist:
-    #print "In for loop"
-    if i != "da19" and i != 'da18':
-        print "in if statement"
-        command2 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
-        print "The command to run is ------ " + command2 + " --------"
-        #           smartctl -a /dev/$i | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 "C"}'
-        ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command2],
-                               shell=False,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE)
-        hddtemp = ssh.stdout.readlines()
-        pprint.pprint(hddtemp)
-        print hddtemp
-        if hddtemp == []:
-            error = ssh.stderr.readlines()
-            print >> sys.stderr, "ERROR: %s" % error
-        else:
-            pprint.pprint(hddtemp)
+# for i in hddlist:
+#     #print "In for loop"
+#     if i != "da19" and i != 'da18':
+#         print "in if statement"
+#         command2 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
+#         print "The command to run is ------ " + command2 + " --------"
+#         #           smartctl -a /dev/$i | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 "C"}'
+#         ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command2],
+#                                shell=False,
+#                                stdout=subprocess.PIPE,
+#                                stderr=subprocess.PIPE)
+#         hddtemp = ssh.stdout.readlines()
+#         pprint.pprint(hddtemp)
+#         print hddtemp
+#         if hddtemp == []:
+#             error = ssh.stderr.readlines()
+#             print >> sys.stderr, "ERROR: %s" % error
+#         else:
+#             pprint.pprint(hddtemp)
 
 
 
