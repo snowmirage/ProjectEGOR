@@ -9,32 +9,31 @@ command1 = "sysctl -n kern.disks"
 
 
 ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command1],
-	shell=False,
-	stdout=subprocess.PIPE,
-	stderr=subprocess.PIPE)
+    shell=False,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE)
 hddlist = ssh.stdout.readlines()
 if hddlist == []:
-	error = ssh.stderr.readlines()
-	print >>sys.stderr, "ERROR: %s" % error
+    error = ssh.stderr.readlines()
+    print >>sys.stderr, "ERROR: %s" % error
 else:
-	# print hddlist
+    # print hddlist
     something = 1
 
 for i in hddlist:
-	if i != "da19" and i != 'da18':
-	    # if its not on of the flash drives
+    if i != "da19" and i != 'da18':
         command2 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
         #           smartctl -a /dev/$i | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 "C"}'
-		ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command1],
-							   shell=False,
-							   stdout=subprocess.PIPE,
-							   stderr=subprocess.PIPE)
-		hddtemp = ssh.stdout.readlines()
-		if hddtemp == []:
-			error = ssh.stderr.readlines()
-			print >> sys.stderr, "ERROR: %s" % error
-		else:
-			print hddtemp
+        ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command1],
+                               shell=False,
+                               stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE)
+        hddtemp = ssh.stdout.readlines()
+        if hddtemp == []:
+            error = ssh.stderr.readlines()
+            print >> sys.stderr, "ERROR: %s" % error
+        else:
+            print hddtemp
 
 
 
