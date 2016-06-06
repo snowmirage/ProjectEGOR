@@ -51,6 +51,6 @@ else:
 
 #print cputemps
 
-print "0 FreenasTemp core0=%s;85;95;0;100|core1=%s;85;95;0;100|core2=%s;85;95;0;100|core3=%s;85;95;0;100|core4=%s;85;95;0;100|core5=%s;85;95;0;100|core6=%s;85;95;0;100|core7=%s;85;95;0;100 OK - Temp of all 8 cores on freenas" % (cputempsF[0], cputempsF[1], cputempsF[2], cputempsF[3], cputempsF[4], cputempsF[5], cputempsF[6], cputempsF[7])
+print "0 FreenasTemp core0=%s;150;165;0;200|core1=%s;150;165;0;200|core2=%s;150;165;0;200|core3=%s;150;165;0;200|core4=%s;150;165;0;200|core5=%s;150;165;0;200|core6=%s;150;165;0;200|core7=%s;150;165;0;200 OK - Temp of all 8 cores on freenas" % (cputempsF[0], cputempsF[1], cputempsF[2], cputempsF[3], cputempsF[4], cputempsF[5], cputempsF[6], cputempsF[7])
 
 # the max temp for this cpu is 76C   or 168.8F adjust the crit / warn to match that sometime soon
