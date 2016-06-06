@@ -17,7 +17,7 @@ if hddlist == []:
     error = ssh.stderr.readlines()
     print >>sys.stderr, "ERROR: %s" % error
 else:
-    # print hddlist
+    print hddlist
     something = 1
 
 for i in hddlist:
@@ -25,6 +25,7 @@ for i in hddlist:
     if i != "da19" and i != 'da18':
         print "in if statement"
         command2 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
+        print "The command to run is ------ " + command2 + " --------"
         #           smartctl -a /dev/$i | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 "C"}'
         ssh = subprocess.Popen(["ssh", "-i", keyfile, "powerpc@%s" % host, command2],
                                shell=False,
