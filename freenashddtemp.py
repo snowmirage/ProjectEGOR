@@ -25,7 +25,7 @@ hddlist = hdd[0].split()
 
 
 for i in hddlist:
-    print "In for loop"
+    #print "In for loop"
     if i != "da19" and i != 'da18':
         print "in if statement"
         command2 = "smartctl -a /dev/" + str(i) + " | awk '/Temperature_Celsius/{print $0}' | awk '{print $10 \"C\"}'"
@@ -36,6 +36,8 @@ for i in hddlist:
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)
         hddtemp = ssh.stdout.readlines()
+        pprint.pprint(hddtemp)
+        print hddtemp
         if hddtemp == []:
             error = ssh.stderr.readlines()
             print >> sys.stderr, "ERROR: %s" % error
